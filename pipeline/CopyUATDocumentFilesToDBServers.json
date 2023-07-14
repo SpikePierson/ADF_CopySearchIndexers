@@ -1,0 +1,1826 @@
+{
+	"name": "CopyUATDocumentFilesToDBServers",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopySSUAT01PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS21TxtFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SSUAT01/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SSUAT01ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSUAT01DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySSUAT01DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySSUAT01PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SSUAT01/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SSUAT01ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSUAT01DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySSUAT01DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySSUAT01DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SSUAT01/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SSUAT01ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSUAT01DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySSUAT01XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySSUAT01DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SSUAT01/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SSUAT01ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSUAT01DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySSUAT01TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySSUAT01XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SSUAT01/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SSUAT01ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSUAT01DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS21PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS19TxtFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS21/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS21ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS21DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS21DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS21PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS21/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS21ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS21DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS21DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS21DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS21/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS21ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS21DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS19PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS19/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS19ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS19DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS19DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS19PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS19/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS19ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS19DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS19DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS19DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS19/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS19ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS19DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS18PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS16TxtFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS18/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS18ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS18DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS18DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS18PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS18/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS18ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS18DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS18DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS18DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS18/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS18ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS18DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS16PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS14TxtFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS16/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS16ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS16DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS16DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS16PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS16/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS16ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS16DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS16DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS16DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS16/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS16ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS16DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS14PdfFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS14/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.pdf",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS14ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS14DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS14DocFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS14PdfFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS14/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.doc",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS14ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS14DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS14DocxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS14DocFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS14/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.docx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS14ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS14DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS14XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS14DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS14/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS14ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS14DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS14TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS14XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS14/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS14ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS14DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS16XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS16DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS16/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS16ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS16DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS16TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS16XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS16/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS16ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS16DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS18XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS18DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS18/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS18ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS18DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS18TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS18XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS18/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS18ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS18DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS19XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS19DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS19/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS19ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS19DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS19TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS19XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS19/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS19ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS19DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS21XlsxFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS21DocxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS21/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.xlsx",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS21ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS21DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopySS21TxtFilesToDBServers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CopySS21XlsxFilesToDBServers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 24,
+					"retryIntervalInSeconds": 240,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "SS21/Userfiles/DBFiles",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "*.txt",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SS21ToDBServers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SS21DbSink",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-06-19T20:49:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

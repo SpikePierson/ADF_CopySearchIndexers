@@ -1,0 +1,19 @@
+{
+	"name": "SS14DbSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageCog",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "ss14/userfiles/dbfiles",
+				"container": "dbservers"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

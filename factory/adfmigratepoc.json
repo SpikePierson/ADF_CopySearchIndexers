@@ -1,0 +1,9 @@
+{
+	"name": "adfmigratepoc",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3f847473-3877-4165-b9a1-a7279cf0847e",
+		"tenantId": "40132305-fbc4-43cc-ae75-079906c11119"
+	}
+}

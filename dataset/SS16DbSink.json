@@ -1,0 +1,19 @@
+{
+	"name": "SS16DbSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageCog",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "ss16/userfiles/dbfiles",
+				"container": "dbservers"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
