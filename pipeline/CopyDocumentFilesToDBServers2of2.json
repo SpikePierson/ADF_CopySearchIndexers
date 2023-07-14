@@ -1,5 +1,5 @@
 {
-	"name": "CopyUATDocumentFilesToDBServers",
+	"name": "CopyDocumentFilesToDBServers2of2",
 	"properties": {
 		"activities": [
 			{

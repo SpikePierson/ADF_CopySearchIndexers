@@ -1,5 +1,5 @@
 {
-	"name": "CopyDocumentFilesToDBServers",
+	"name": "CopyDocumentFilesToDBServers1of2",
 	"properties": {
 		"activities": [
 			{
