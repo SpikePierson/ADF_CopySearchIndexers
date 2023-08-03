@@ -6,7 +6,7 @@
 		"type": "AzureBlobStorage",
 		"typeProperties": {
 			"connectionString": "DefaultEndpointsProtocol=https;AccountName=presencecognitivesearch;EndpointSuffix=core.windows.net;",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJGQzZBM0Q1LTYxRDYtNDYxRi1CMTZFLUYwNTIwNzZBMjk5Rl8zOTJhZGZhNy1mOWY2LTRmNGQtYTk0My0xNzMyY2ExNmUwMmQiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEZCQzE4NjdGLTAwN0UtNDRDMy05QUFGLTZDQUNDRjdFODI0RF9hZjdhNTRhMi0yMDQwLTQwNWEtYmJjMy04N2U1NTRhMjBkZDYiDQp9"
 		}
 	}
 }
